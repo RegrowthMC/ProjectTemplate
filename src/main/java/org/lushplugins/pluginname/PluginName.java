@@ -20,7 +20,7 @@ public final class PluginName extends JavaPlugin {
         // Disable implementation
     }
 
-    public static RegrowthThemes getInstance() {
+    public static PluginName getInstance() {
         return plugin;
     }
 }
