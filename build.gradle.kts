@@ -9,8 +9,8 @@ group = "org.lushplugins"
 version = "1.0.0"
 
 repositories {
-    mavenCentral()
     mavenLocal()
+    mavenCentral()
     maven("https://oss.sonatype.org/content/groups/public/")
     maven("https://repo.papermc.io/repository/maven-public/") // Paper
 }
