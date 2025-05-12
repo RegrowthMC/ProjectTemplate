@@ -2,6 +2,7 @@ plugins {
     `java-library`
     `maven-publish`
     id("com.gradleup.shadow") version("8.3.0")
+    id("xyz.jpenilla.run-paper") version("2.2.4")
 }
 
 group = "org.lushplugins"
@@ -11,12 +12,12 @@ repositories {
     mavenCentral()
     mavenLocal()
     maven("https://oss.sonatype.org/content/groups/public/")
-    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") // Spigot
+    maven("https://repo.papermc.io/repository/maven-public/") // Paper
 }
 
 dependencies {
     // Dependencies
-    compileOnly("org.spigotmc:spigot-api:1.21.3-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
 
     // Soft Dependencies
 
