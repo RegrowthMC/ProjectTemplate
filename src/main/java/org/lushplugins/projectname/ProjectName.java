@@ -2,8 +2,8 @@ package org.lushplugins.pluginname;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class PluginName extends JavaPlugin {
-    private static PluginName plugin;
+public final class ProjectName extends JavaPlugin {
+    private static ProjectName plugin;
 
     @Override
     public void onLoad() {
@@ -20,7 +20,7 @@ public final class PluginName extends JavaPlugin {
         // Disable implementation
     }
 
-    public static PluginName getInstance() {
+    public static ProjectName getInstance() {
         return plugin;
     }
 }
