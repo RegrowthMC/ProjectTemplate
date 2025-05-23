@@ -11,8 +11,12 @@ jobs:
       - uses: kota65535/github-template-rename-action@v1
         with:
           from-name: projectname
+          paths-ignore: |
+            .github/**
 
       - uses: kota65535/github-template-rename-action@v1
         with:
           from-name: ProjectName
+          paths-ignore: |
+            .github/**
 
