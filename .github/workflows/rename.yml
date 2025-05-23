@@ -17,6 +17,8 @@ jobs:
         uses: kota65535/github-template-rename-action@v1
         with:
           from-name: project-name
+          pr-title: "Rename from Template"
+          commit-message: "Replaced instances of project-name with repository name"
           github-token: ${{ secrets.GITHUB_TOKEN }}
           paths-ignore: |
             .github/**
