@@ -1,4 +1,4 @@
-package org.lushplugins.pluginname;
+package org.lushplugins.projectname;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
