@@ -1,4 +1,4 @@
-name: PluginName
+name: ProjectName
 version: ${project.version}
-main: org.lushplugins.pluginname.PluginName
+main: org.lushplugins.projectname.ProjectName
 api-version: '1.17'
