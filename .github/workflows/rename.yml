@@ -1,5 +1,4 @@
 name: Rename Template Repository
-
 on:
   workflow_dispatch:  # Allows manual triggering
 
