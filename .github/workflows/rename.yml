@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
       - name: Apply Rename
         uses: kota65535/github-template-rename-action@v1
