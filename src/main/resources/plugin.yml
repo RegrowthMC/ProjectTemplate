@@ -1,4 +1,4 @@
 name: ProjectName
 version: ${project.version}
 main: org.lushplugins.projectname.ProjectName
-api-version: '1.17'
+api-version: '1.21'
