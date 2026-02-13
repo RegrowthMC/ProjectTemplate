@@ -19,12 +19,23 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Apply Rename
+      - name: Apply Rename for Project Name
         uses: kota65535/github-template-rename-action@v1
         with:
           from-name: project-name
           pr-title: "Rename from Template"
           commit-message: "Replaced instances of project-name with repository name"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          paths-ignore: |
+            .github/**
+
+      - name: Apply Rename for Project Owner
+        uses: kota65535/github-template-rename-action@v1
+        with:
+          from-name: project-owner
+          to-name: ${{ github.repository_owner }}
+          pr-title: "Rename from Template"
+          commit-message: "Replaced instances of project-owner with repository owner"
           github-token: ${{ secrets.GITHUB_TOKEN }}
           paths-ignore: |
             .github/**
