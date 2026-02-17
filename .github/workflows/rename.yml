@@ -29,16 +29,11 @@ jobs:
           paths-ignore: |
             .github/**
 
-      - name: Apply Rename for Project Owner
-        uses: kota65535/github-template-rename-action@v1
-        with:
-          from-name: project-owner
-          to-name: ${{ github.repository_owner }}
-          pr-title: "Rename from Template"
-          commit-message: "Replaced instances of project-owner with repository owner"
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          paths-ignore: |
-            .github/**
+      - name: Replace ProjectOwner in plugin.yml
+        run: |
+          sed -i "s/ProjectOwner/${{ github.repository_owner }}/g" src/main/resources/plugin.yml
+          git add src/main/resources/plugin.yml
+          git commit -m "Replace ProjectOwner with repository owner" || echo "No changes to commit"
 
       - name: Delete Workflow File
         run: |
@@ -53,7 +48,7 @@ jobs:
         run: |
           git fetch origin main
           git checkout main
-          git merge --no-ff template-rename -m "Replaced instances of project-name with repository name"
+          git merge --squash template-rename -m "Replaced instances of project-name with repository name"
           git push origin main
 
       - name: Delete PR branch
