@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     // Dependencies
-    compileOnly("io.papermc.paper:paper-api:1.21.7-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT")
 
     // Soft Dependencies
 
@@ -24,7 +24,7 @@ dependencies {
 }
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(25))
 
     registerFeature("optional") {
         usingSourceSet(sourceSets["main"])
