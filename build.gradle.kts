@@ -1,3 +1,6 @@
+import java.io.BufferedReader
+import java.io.InputStreamReader
+
 plugins {
     `java-library`
     id("com.gradleup.shadow") version("9.3.1")
