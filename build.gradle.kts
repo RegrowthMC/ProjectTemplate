@@ -46,13 +46,14 @@ tasks {
     }
 
     processResources{
-        filesMatching("plugin.yml") {
-            expand(project.properties)
-        }
-
         inputs.property("version", rootProject.version)
+        inputs.property("commit", getCurrentCommitHash())
+
         filesMatching("plugin.yml") {
-            expand("version" to rootProject.version)
+            expand(
+                "version" to rootProject.version,
+                "commit" to getCurrentCommitHash()
+            )
         }
     }
 
@@ -63,5 +64,18 @@ tasks {
             modrinth("viaversion", "5.7.1")
             modrinth("viabackwards", "5.7.1")
         }
+    }
+}
+
+fun getCurrentCommitHash(): String {
+    val process = ProcessBuilder("git", "rev-parse", "--short", "HEAD").start()
+    val reader = BufferedReader(InputStreamReader(process.inputStream))
+    val commitHash = reader.readLine()
+    reader.close()
+    process.waitFor()
+    if (process.exitValue() == 0) {
+        return commitHash ?: ""
+    } else {
+        throw IllegalStateException("Failed to retrieve the commit hash.")
     }
 }
