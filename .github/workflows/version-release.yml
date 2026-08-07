@@ -28,7 +28,7 @@ jobs:
       - name: Extract version from build.gradle.kts
         id: get_version
         run: |
-          FULL_VERSION=$(grep -oP 'version = "\K[0-9]+\.[0-9]+\.[0-9]+(?:-\w*)?' build.gradle.kts)
+          FULL_VERSION=$(grep -oP 'version = "\K[0-9]+\.[0-9]+\.[0-9]+(?:-[^"]*)?' build.gradle.kts)
           echo "FULL_VERSION=$FULL_VERSION" >> $GITHUB_ENV
           
           VERSION=$(grep -oP 'version = "\K[0-9]+\.[0-9]+\.[0-9]+' build.gradle.kts)
@@ -38,16 +38,19 @@ jobs:
         id: check_version
         run: |
           if [[ "${{ env.FULL_VERSION }}" == *"-"* ]]; then
-            echo Version is not a full release - skipping release.
-            exit 0
+            echo "IS_FULL_RELEASE=false" >> $GITHUB_ENV
+          else
+            echo "IS_FULL_RELEASE=true" >> $GITHUB_ENV
           fi
 
       - name: Build with Gradle
+        if: env.IS_FULL_RELEASE == 'true'
         run: |
           chmod +x ./gradlew
           ./gradlew shadowJar
 
       - name: Post GitHub Release
+        if: env.IS_FULL_RELEASE == 'true'
         uses: svenstaro/upload-release-action@v2
         continue-on-error: true
         with:
@@ -57,3 +60,4 @@ jobs:
           asset_name: ${{ github.event.repository.name }}-${{ env.FULL_VERSION }}
           tag: v${{ env.FULL_VERSION }}
           overwrite: false
+
