@@ -43,6 +43,9 @@ tasks {
     }
 
     shadowJar {
+        enableAutoRelocation = true
+        relocationPrefix = "org.lushplugins.projectname.libraries"
+
         minimize()
 
         archiveFileName.set("${project.name}-${project.version}.jar")
