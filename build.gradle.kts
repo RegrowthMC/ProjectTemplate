@@ -64,11 +64,11 @@ tasks {
     }
 
     runServer {
-        minecraftVersion("1.21.11")
+        minecraftVersion("26.2")
 
         downloadPlugins {
-            modrinth("viaversion", "5.7.1")
-            modrinth("viabackwards", "5.7.1")
+            modrinth("viaversion", "5.12.1")
+            modrinth("viabackwards", "5.12.1")
         }
     }
 }
